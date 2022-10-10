@@ -58,6 +58,6 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/task.routes')(app);
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(8080, () => {
     console.log('Server started');
 })
