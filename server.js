@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 const db = require('./app/models');
 const Role = db.role;
 
-db.mongoose.connect(`mongodb+srv://subhadeep41:allaboutscience123@cluster0.kexbk.mongodb.net/?retryWrites=true&w=majority`, {
+db.mongoose.connect(`mongodb+srv://subha41:flipremployee@cluster0.kexbk.mongodb.net/?retryWrites=true&w=majority`, {
     useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected");
