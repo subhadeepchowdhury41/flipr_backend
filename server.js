@@ -4,7 +4,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOption = {
-    origin: "http://localhost:8081"
+    origin: "https://flipr-employee-management.herokuapp.com:8081"
 }
 
 app.use(cors(corsOption));
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 const db = require('./app/models');
 const Role = db.role;
 
-db.mongoose.connect(`mongodb+srv://subha41:flipremployee@cluster0.kexbk.mongodb.net/?retryWrites=true&w=majority`, {
+db.mongoose.connect(`mongodb+srv://subha41:flipremployee@cluster0.kexbk.mongodb.net/flipr_db`, {
     useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected");
