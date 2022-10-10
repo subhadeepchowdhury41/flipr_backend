@@ -15,7 +15,8 @@ app.use(express.urlencoded({extended: true}));
 const db = require('./app/models');
 const Role = db.role;
 
-db.mongoose.connect(`mongodb+srv://subha41:subha41@cluster1.30i1syi.mongodb.net/flipr_db`, {
+db.mongoose.connect("mongodb+srv://subha:subha41@cluster0.nejigio.mongodb.net/?retryWrites=true&w=majority", {
+    useNewUrlParser: true,    
     useUnifiedTopology: true
 }).then(() => {
     console.log("Successfully connected");
