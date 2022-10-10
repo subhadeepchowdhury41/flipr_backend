@@ -19,7 +19,7 @@ exports.updateEmployee = (req, res) => {
 
 exports.getAllEmployees = (req, res) => {
     db.user.find().then((employees) => {
-        res.status(200).send(JSON.stringify(employees));
+        res.status(200).send({employees: employees});
     }).catch(err => {
         res.status(500).send({result: err.name, message: err.message});
     })
