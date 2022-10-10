@@ -1,13 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
-const corsOption = {
-    origin: "https://localhost:8081"
-}
+// const corsOption = {
+//     origin: "https://localhost:8081"
+// }
 
-app.use(cors(corsOption));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -57,6 +58,6 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/task.routes')(app);
 
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server started');
 })
