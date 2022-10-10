@@ -8,6 +8,7 @@ var bcrypt = require("bcryptjs");
 const RefreshToken = require("../models/refreshToken.model");
 
 exports.signup = (req, res) => {
+  console.log(req.body);
   const user = new User({
     username: req.body.username,
     email: req.body.email,
