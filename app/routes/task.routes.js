@@ -11,6 +11,6 @@ module.exports = (app) => {
   });
 
   app.post("/api/task/add", controller.addTask);
-  app.get("/api/tasks", controller.getTasks);
+  app.get("/api/tasks/:id", controller.getTasks);
   app.delete("/api/task/delete/:id", controller.deleteTask);
 };

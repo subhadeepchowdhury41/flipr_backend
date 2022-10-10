@@ -32,8 +32,8 @@ exports.addTask = async (req, res) => {
 }
 
 exports.getTasks = async (req, res) => {
-    await db.task.find({employee: Object(req.body.employeeId)}).then((result) => {
-        res.status(200).send(result);
+    await db.task.find({employee: Object(req.params.id)}).then((result) => {
+        res.status(200).send({tasks: result});
     }).catch(err => {
         res.status(500).send({message: err.message, result: err.name});
     });
