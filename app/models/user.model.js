@@ -12,10 +12,6 @@ const User = mongoose.model(
         contactNo: String,
         profession: String,
         role: String,
-        roles: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Role"
-        }],
         tasks: [
           {
             type: mongoose.Schema.Types.ObjectId,
