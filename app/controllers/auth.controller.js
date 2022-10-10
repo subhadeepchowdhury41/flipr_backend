@@ -11,6 +11,12 @@ exports.signup = (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
+    active: true,
+    department: req.body.department,
+    joiningDate: req.body.joiningDate,
+    role: "employee",
+    profession: req.body.profession,
+    contactNo: req.body.contactNo,
     password: bcrypt.hashSync(req.body.password, 8)
   });
 
@@ -38,7 +44,7 @@ exports.signup = (req, res) => {
               return;
             }
 
-            res.send({ message: "User was registered successfully!" });
+            res.send({message: "User was registered successfully!" });
           });
         }
       );
@@ -56,7 +62,7 @@ exports.signup = (req, res) => {
             return;
           }
 
-          res.send({ message: "User was registered successfully!" });
+          res.send({message: "User was registered successfully!" });
         });
       });
     }

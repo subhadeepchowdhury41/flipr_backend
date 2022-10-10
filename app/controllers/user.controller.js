@@ -1,3 +1,4 @@
+const db = require("../models");
 const User = require("../models/user.model");
 
 exports.allAccess = (req, res) => {
@@ -12,8 +13,14 @@ exports.adminBoard = (req, res) => {
     res.status(200).send("Admin Content.");
 };
 
-exports.addEmployee = (req, res) => {
-    let employee = new User({
-        username: req.username
-    });
+exports.updateEmployee = (req, res) => {
+    db.user.findByIdAndUpdate({_id: req.body.employeeId})
+}
+
+exports.getAllEmployees = (req, res) => {
+    db.user.find().then((employees) => {
+        res.status(200).send(JSON.stringify(employees));
+    }).catch(err => {
+        res.status(500).send({result: err.name, message: err.message});
+    })
 }
