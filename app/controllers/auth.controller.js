@@ -60,12 +60,16 @@ exports.signin = (req, res) => {
       });
       
       await RefreshToken.createToken(user).then((refreshToken) => {
-        console.log(user);
         res.status(200).send({
-          id: user._id,
+          _id: user._id,
           username: user.username,
           email: user.email,
+          department: user.department,
+          joiningDate: user.joiningDate,
           role: user.role,
+          profession: user.profession,
+          active: user.active,
+          contactNo: user.contactNo,
           accessToken: token,
           refreshToken: refreshToken
         });
