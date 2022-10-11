@@ -14,7 +14,7 @@ exports.adminBoard = (req, res) => {
 };
 
 exports.updateEmployee = (req, res) => {
-    db.user.findByIdAndUpdate(req.params.id, req.body.data).then((employee) => {
+    db.user.findByIdAndUpdate(req.params.id, req.body).then((employee) => {
         res.status(200).send(employee);
     }).catch(err => {
         res.status(500).send({message: err.message, result: err.name});
