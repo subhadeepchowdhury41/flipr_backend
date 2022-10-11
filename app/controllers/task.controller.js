@@ -6,24 +6,29 @@ const { addTaskForEmployee } = require("../services/task.services")
 
 exports.addTask = async (req, res) => {
 
-    await db.user.findOne({_id: Object(req.body.employeeId)}).then(async user => {
+    await db.user.findOne({_id: Object(req.params.id)}).then(async user => {
         console.log(user);
 
         let task = new Task({
             date: req.body.date,
             duration: req.body.duration,
-            title: req.body.title,
+            type: req.body.type,
             description: req.body.description,
             startTime: req.body.startTime,
-            employee: user
+            employee: user._id
         });
 
-        await addTaskForEmployee(req.body.employeeId, task).then(() => {
+        await addTaskForEmployee(req.params.id, task).then(() => {
             res.status(200).send({"result": "added successfully"});
         }).catch(err => {
             console.log(err);
+            res.status(500).send({
+                result: err.name,
+                message: err.message
+            });
         });
     }).catch((err) => {
+        console.log(err);
         res.status(500).send({
             result: err.name,
             message: err.message
@@ -33,8 +38,10 @@ exports.addTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
     await db.task.find({employee: Object(req.params.id)}).then((result) => {
+        console.log(result);
         res.status(200).send({tasks: result});
     }).catch(err => {
+        console.log(err);
         res.status(500).send({message: err.message, result: err.name});
     });
     

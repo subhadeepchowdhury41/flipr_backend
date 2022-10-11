@@ -10,7 +10,7 @@ module.exports = (app) => {
     next();
   });
 
-  app.post("/api/task/add", controller.addTask);
+  app.post("/api/task/add/:id", controller.addTask);
   app.get("/api/tasks/:id", controller.getTasks);
   app.delete("/api/task/delete/:id", controller.deleteTask);
 };
