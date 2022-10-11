@@ -1,5 +1,6 @@
 const { authJwt } = require("../middlewares");
 const controller = require("../controllers/user.controller");
+const { application } = require("express");
 
 module.exports = (app) => {
   app.use((req, res, next) => {
@@ -23,4 +24,8 @@ module.exports = (app) => {
   app.get(
     "/api/auth/employees", controller.getAllEmployees
   );
+
+  application.put(
+    "/api/auth/employee/:id", controller.updateEmployee
+  )
 };
