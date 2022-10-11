@@ -1,3 +1,4 @@
+const { task } = require("../models");
 const db = require("../models");
 const User = require("../models/user.model");
 
@@ -29,4 +30,14 @@ exports.getAllEmployees = (req, res) => {
     }).catch(err => {
         res.status(500).send({result: err.name, message: err.message});
     })
+}
+
+exports.deleteEmployee = (req, res) => {
+    db.user.findByIdAndDelete({_id: Object(req.params.id)}).then(() => {
+        db.task.deleteMany({employee: req.params.id}).then(() => {
+            res.status(200).send({result: "Employee removed Successfully"});
+        });
+    }).catch(err => {
+        res.status(500).send({result: err.name, message: err.message});
+    });
 }

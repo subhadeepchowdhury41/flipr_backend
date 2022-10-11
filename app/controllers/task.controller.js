@@ -18,8 +18,8 @@ exports.addTask = async (req, res) => {
             employee: user._id
         });
 
-        await addTaskForEmployee(req.params.id, task).then(() => {
-            res.status(200).send({"result": "added successfully"});
+        await addTaskForEmployee(req.params.id, task).then((employee) => {
+            res.status(200).send({"result": "added successfully", "task": task});
         }).catch(err => {
             console.log(err);
             res.status(500).send({
@@ -44,7 +44,6 @@ exports.getTasks = async (req, res) => {
         console.log(err);
         res.status(500).send({message: err.message, result: err.name});
     });
-    
 }
 
 exports.deleteTask = async (req, res) => {

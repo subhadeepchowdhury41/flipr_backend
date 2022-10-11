@@ -23,7 +23,7 @@ exports.signup = async (req, res) => {
   });
 
   await user.save().then((result) => {
-    res.status(200).send({result: "User added successfully"});
+    res.status(200).send({result: "User added successfully", user: user});
   }).catch(err => {
     res.status(500).send({result: err.name, message: err.message});
   });

@@ -26,5 +26,9 @@ module.exports = (app) => {
 
   app.put(
     "/api/auth/employee/:id", controller.updateEmployee
+  );
+
+  app.delete(
+    "/api/auth/employee/delete/:id", controller.deleteEmployee
   )
 };
