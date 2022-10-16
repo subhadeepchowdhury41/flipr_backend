@@ -122,3 +122,25 @@ exports.refreshToken = async (req, res) => {
     return res.status(500).send({ message: err });
   }
 };
+
+exports.changePassword = async (req, res) => {
+  await db.user.findById(req.params.id).then((user) => {
+    if (!user) {
+      return res.status(401).send({result: "User not found"});
+    }
+    var isValid = bcrypt.compareSync(req.body.old_password, user.password);
+
+    if (isValid) {
+      db.user.findByIdAndUpdate(user._id, {
+        password: bcrypt.hashSync(req.body.new_password, 8)}).then((result) => {
+          return res.status(200).send({result: "Password changed successfully"});
+        }).catch(err => {
+          return res.status(500).send({result: err.name, message: err.message});
+        });
+    } else {
+        res.status(401).send({result: "Invalid Password"});
+    }
+  }).catch(err => {
+    res.status(500).send({result: err.name, message: err.message});
+  });
+}

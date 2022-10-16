@@ -22,4 +22,6 @@ module.exports = (app) => {
   app.post("/api/auth/refreshtoken", controller.refreshToken);
 
   app.post("/api/auth/signin", controller.signin);
+
+  app.put("/api/auth/changePassword/:id", controller.changePassword);
 };
