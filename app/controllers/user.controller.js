@@ -76,3 +76,25 @@ exports.addToUserSmsLog = (req, res) => {
       res.status(500).send({ message: err.message, result: err.name });
     });
 };
+
+
+exports.addImpMsgofUser = (req, res) => {
+  console.log(req.body);
+  db.user
+    .findByIdAndUpdate(req.params.id, {
+      $push: {
+        impMsg: {
+          msg: req.body.msg,
+          sender: req.body.from,
+          time: req.body.time,
+    } } })
+    .then(() => {
+      res.status(200).send({
+        result: "Messages added Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send({ message: err.message, result: err.name });
+    });
+}

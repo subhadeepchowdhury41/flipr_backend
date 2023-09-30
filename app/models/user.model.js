@@ -11,6 +11,11 @@ const User = mongoose.model(
     department: String,
     contactNo: String,
     profession: String,
+    impMsg: [
+      {
+        type: mongoose.Schema.Types.Mixed,
+      },
+    ],
     role: String,
     tasks: [
       {

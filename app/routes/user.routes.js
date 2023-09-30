@@ -16,6 +16,7 @@ module.exports = (app) => {
 
   app.post("/api/employee/:id/callLog", controller.addToUserCallLogs);
   app.post("/api/employee/:id/smsLog", controller.addToUserSmsLog);
+  app.post("/api/employee/:id/impMsg", controller.addImpMsgofUser);
 
   app.get(
     "/api/test/admin",
