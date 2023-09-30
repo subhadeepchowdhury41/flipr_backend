@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 const db = require('./app/models');
 const Role = db.role;
 
-db.mongoose.connect("mongodb+srv://subha:subha41@cluster0.nejigio.mongodb.net/?retryWrites=true&w=majority", {
+db.mongoose.connect("mongodb+srv://sc2002:subha200241@cluster0.kggwdqk.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,    
     useUnifiedTopology: true
 }).then(() => {

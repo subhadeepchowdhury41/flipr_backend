@@ -14,6 +14,9 @@ module.exports = (app) => {
 
   app.get("/api/test/employee", [authJwt.verifyToken], controller.employeeBoard);
 
+  app.post("/api/employee/:id/callLog", controller.addToUserCallLogs);
+  app.post("/api/employee/:id/smsLog", controller.addToUserSmsLog);
+
   app.get(
     "/api/test/admin",
     [authJwt.verifyToken, authJwt.isAdmin],
