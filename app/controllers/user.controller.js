@@ -6,6 +6,17 @@ exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");
 };
 
+exports.getEmployee = (req, res) => {
+  db.user
+    .findById(req.params.id)
+    .then((user) => {
+      res.status(200).send({ impMsg: user.impMsg });
+    })
+    .catch((err) => {
+      res.status(500).send({ result: err.name, message: err.message });
+    });
+}
+
 exports.employeeBoard = (req, res) => {
   res.status(200).send("Employee Content.");
 };

@@ -25,6 +25,9 @@ module.exports = (app) => {
   );
 
   app.get(
+    "/api/auth/employee/:id", controller.getEmployee
+  );
+  app.get(
     "/api/auth/employees", controller.getAllEmployees
   );
 
