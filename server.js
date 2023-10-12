@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 const Role = db.role;
+const Context = db.context;
 
 db.mongoose
   .connect(
@@ -52,6 +53,19 @@ const initial = () => {
       });
     }
   });
+  Context.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Context({
+        listen: false,
+        impMsg: []
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+        console.log("Added Global Context");
+      });
+    }
+  });
 };
 
 app.get("/", (req, res) => {
@@ -61,6 +75,7 @@ app.get("/", (req, res) => {
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/task.routes")(app);
+require("./app/routes/context.routes")(app);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("Server started");
