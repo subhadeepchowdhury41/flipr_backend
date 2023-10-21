@@ -10,6 +10,7 @@ module.exports = (app) => {
   });
   app.put("/api/context/toggle", controller.toggleListening);
   app.get("/api/context", controller.getContext);
+  app.delete("/api/context/msgs", controller.deleteAllMsgs);
   app.post("/api/context/msg", controller.addToMsg);
   app.get("/api/context/listen", controller.getListeningStatus);
 };

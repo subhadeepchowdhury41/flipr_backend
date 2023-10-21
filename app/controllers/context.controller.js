@@ -28,3 +28,11 @@ exports.getListeningStatus = async (req, res) => {
   const ctx = await Context.find();
   return res.status(200).send(ctx[0].listen);
 };
+
+exports.deleteAllMsgs = async (req, res) => {
+  const ctx = await Context.find();
+  ctx[0].impMsg = [];
+  await ctx[0].save().then((ress) => {
+    return res.status(200).send("Success");
+  });
+};
