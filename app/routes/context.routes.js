@@ -13,4 +13,4 @@ module.exports = (app) => {
   app.delete("/api/context/msgs", controller.deleteAllMsgs);
   app.post("/api/context/msg", controller.addToMsg);
   app.get("/api/context/listen", controller.getListeningStatus);
-};
+}

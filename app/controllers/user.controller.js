@@ -10,7 +10,7 @@ exports.getEmployee = (req, res) => {
   db.user
     .findById(req.params.id)
     .then((user) => {
-      res.status(200).send({ impMsg: user.impMsg });
+      res.status(200).send(user);
     })
     .catch((err) => {
       res.status(500).send({ result: err.name, message: err.message });
